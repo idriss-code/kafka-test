@@ -14,6 +14,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
 
     implementation 'org.apache.kafka:kafka-clients:3.7.1'
+    implementation 'org.apache.kafka:kafka-streams:3.7.1'
 }
 
 test {
