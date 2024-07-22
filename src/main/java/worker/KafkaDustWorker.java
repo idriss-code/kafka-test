@@ -1,8 +1,5 @@
 package worker;
 
-import com.dustmobile.backend.service.sim.queue.Exception.AckException;
-import com.dustmobile.backend.service.sim.queue.Exception.NoAckException;
-import com.dustmobile.backend.service.sim.queue.Worker;
 import org.apache.kafka.clients.consumer.*;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -82,9 +79,9 @@ public abstract class KafkaDustWorker implements Worker, Runnable {
 
                     try {
                         returnMessage = process(record.value());
-                    } catch (AckException e) {
-                        LOG.severe(e.getMessage());
-                        returnMessage = e.getMessage();
+                    //} catch (AckException e) {
+                    //    LOG.severe(e.getMessage());
+                    //    returnMessage = e.getMessage();
                     } catch (Exception e) { // NoAckException include
                         LOG.severe("error return message to queue" + e);
                         return;
@@ -124,5 +121,5 @@ public abstract class KafkaDustWorker implements Worker, Runnable {
         }
     }
 
-    public abstract String process(String task) throws AckException, NoAckException;
+    public abstract String process(String task);
 }
