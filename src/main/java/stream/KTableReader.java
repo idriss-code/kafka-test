@@ -46,12 +46,10 @@ public class KTableReader {
         System.out.println("Value for '" + key + "': " + value);
 
         KeyValueIterator<String, Long> it = keyValueStore.all();
-        while(it.hasNext()) {
+        while (it.hasNext()) {
             System.out.println(it.next());
         }
 
-        // Wait for the Kafka Streams application to start and create the state stores
-        Runtime.getRuntime().addShutdownHook(new Thread(streams::close));
-
+        streams.close();
     }
 }
