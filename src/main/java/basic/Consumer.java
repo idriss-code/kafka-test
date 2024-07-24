@@ -17,8 +17,8 @@ public class Consumer {
         consumerProperties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         consumerProperties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         consumerProperties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
-        consumerProperties.put(ConsumerConfig.GROUP_ID_CONFIG, "group-1");
         consumerProperties.put(ConsumerConfig.CLIENT_ID_CONFIG, "client-1");
+        consumerProperties.put(ConsumerConfig.GROUP_ID_CONFIG, "group-2");
         //consumerProperties.put(ConsumerConfig.GROUP_ID_CONFIG, UUID.randomUUID().toString());
 
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(consumerProperties);
