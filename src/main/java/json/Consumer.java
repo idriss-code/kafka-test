@@ -28,10 +28,10 @@ public class Consumer {
 
             KafkaConsumer<String, Task> consumer = new KafkaConsumer<>(consumerProperties);
 
-            consumer.subscribe(Arrays.asList("json_topic"));
+            consumer.subscribe(Arrays.asList("json-output"));
 
             ConsumerRecords<String, Task> records = consumer.poll(Duration.ofSeconds(10));
-            System.out.println("records: " + records.count());
+            //System.out.println("records: " + records.count());
             for (ConsumerRecord<String, Task> record : records) {
                 System.out.println(record.value().id);
                 System.out.println(record.value().state);

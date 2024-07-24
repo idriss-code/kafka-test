@@ -29,7 +29,7 @@ public class Producer {
 
         // create a producer record
         ProducerRecord<String, Task> producerRecord =
-                new ProducerRecord<>("json_topic", "key",task);
+                new ProducerRecord<>("json-input", "key",task);
 
         // send data - asynchronous
         producer.send(producerRecord);
