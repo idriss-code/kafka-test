@@ -22,14 +22,13 @@ public class Consumer {
         //consumerProperties.put(ConsumerConfig.GROUP_ID_CONFIG, UUID.randomUUID().toString());
 
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(consumerProperties);
-
         consumer.subscribe(Arrays.asList("first_topic"));
 
-        ConsumerRecords<String, String> records = consumer.poll(Duration.ofSeconds(10));
-
-        for (ConsumerRecord<String, String> record : records) {
-            System.out.println(record.value());
+        while (true) {
+            ConsumerRecords<String, String> records = consumer.poll(Duration.ofSeconds(10));
+            for (ConsumerRecord<String, String> record : records) {
+                System.out.println(record.value());
+            }
         }
-
     }
 }

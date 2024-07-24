@@ -23,13 +23,11 @@ public class Consumer {
 
         consumerProperties.put(JsonDeserializer.CONFIG_VALUE_CLASS, Task.class.getName());
 
+        KafkaConsumer<String, Task> consumer = new KafkaConsumer<>(consumerProperties);
+
+        consumer.subscribe(Arrays.asList("json-output"));
 
         while (true) {
-
-            KafkaConsumer<String, Task> consumer = new KafkaConsumer<>(consumerProperties);
-
-            consumer.subscribe(Arrays.asList("json-output"));
-
             ConsumerRecords<String, Task> records = consumer.poll(Duration.ofSeconds(10));
             //System.out.println("records: " + records.count());
             for (ConsumerRecord<String, Task> record : records) {
