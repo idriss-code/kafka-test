@@ -1,4 +1,4 @@
-package json;
+package json.serializer;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

@@ -1,5 +1,6 @@
-package json;
+package json.serializer;
 
+import json.Task;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
 
