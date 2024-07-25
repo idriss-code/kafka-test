@@ -93,7 +93,7 @@ public abstract class Worker<T,E> implements Runnable {
                     if (returnMessage != null && returnTopic != null) {
                         LOG.info("return '" + returnTopic + " : " + returnMessage);
 
-                        ProducerRecord<String, E> responseRecord = new ProducerRecord<>(returnTopic, "test", returnMessage);
+                        ProducerRecord<String, E> responseRecord = new ProducerRecord<>(returnTopic, null, returnMessage);
                         if (uuid != null) {
                             responseRecord.headers().add("correlation_id", uuid.getBytes());
                         }
