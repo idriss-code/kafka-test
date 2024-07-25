@@ -19,9 +19,9 @@ public class Producer {
         properties.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class.getName());
 
         // create the producer
-        KafkaProducer<String, Task> producer = new KafkaProducer<>(properties);
+        KafkaProducer<String, TaskStatus> producer = new KafkaProducer<>(properties);
 
-        Task task = new Task();
+        TaskStatus task = new TaskStatus();
         task.id = UUID.randomUUID().toString();
         task.action = "TEST";
         task.state = "INITIAL";
@@ -29,8 +29,8 @@ public class Producer {
         System.out.println(task.id);
 
         // create a producer record
-        ProducerRecord<String, Task> producerRecord =
-                new ProducerRecord<>("json-input", "key",task);
+        ProducerRecord<String, TaskStatus> producerRecord =
+                new ProducerRecord<>("json-status", task.id,task);
 
         // send data - asynchronous
         producer.send(producerRecord);

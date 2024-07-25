@@ -9,8 +9,12 @@ public final class CustomSerdes {
     }
 
     public static Serde<Task> Task() {
-        JsonSerializer<Task> serializer = new JsonSerializer<>();
-        JsonDeserializer<Task> deserializer = new JsonDeserializer<>(Task.class);
-        return Serdes.serdeFrom(serializer, deserializer);
+        return new TaskSerde();
+    }
+
+    public static class TaskSerde extends Serdes.WrapperSerde<Task> {
+        public TaskSerde() {
+            super(new JsonSerializer<>(), new JsonDeserializer<>(Task.class));
+        }
     }
 }

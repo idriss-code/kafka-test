@@ -34,6 +34,7 @@ public class KTableReader {
                         .withValueSerde(Serdes.Long()));
 
         KafkaStreams streams = new KafkaStreams(builder.build(), props);
+        streams.cleanUp();
         streams.start();
 
         // Get the store
